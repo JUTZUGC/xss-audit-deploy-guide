@@ -1,0 +1,102 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "xssaudit",
+    "nameCn": "xss-audit",
+    "repoName": "xss-audit-deploy-guide",
+    "oneLiner": "让 agent 按 14 层检查把前端代码里的 XSS 入口翻一遍，再出报告",
+    "officialRepo": "https://github.com/songjianyang/xss-audit",
+    "officialDocs": "https://github.com/songjianyang/xss-audit#installation",
+    "stars": "547",
+    "license": "MIT",
+    "highlights": [
+      "14 层检查，覆盖常见绕过面",
+      "只读代码，不改项目",
+      "支持 React 与 TypeScript",
+      "输出带严重级别的 Markdown 报告",
+      "区分已执行与理论步骤",
+      "MIT，可改"
+    ],
+    "mcpSupport": "以 Agent Skill 形式接入，本身不含 MCP；本仓库的 MCP 只提供安装步骤与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-11-03",
+    "verification": [
+      [
+        "README 确认 14 层检查、安装方式与报告输出",
+        "已核对 2026-11-03"
+      ],
+      [
+        "未实测安装与审计",
+        "说明 2026-11-03"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-11-03"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-11-03"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "steps": [
+        "git clone https://github.com/songjianyang/xss-audit.git",
+        "mkdir -p ~/.claude/skills && cp -r xss-audit ~/.claude/skills/xss-audit",
+        "echo \"装好后在 agent 里输入 /xss-audit src/\""
+      ],
+      "stepsPs": [
+        "git clone https://github.com/songjianyang/xss-audit.git",
+        "New-Item -ItemType Directory -Force \"$HOME\\.claude\\skills\" | Out-Null; Copy-Item -Recurse -Force .\\xss-audit \"$HOME\\.claude\\skills\\xss-audit\"",
+        "Write-Host \"装好后在 agent 里输入 /xss-audit src/\""
+      ],
+      "source": "https://github.com/songjianyang/xss-audit#installation"
+    },
+    "pitfalls": [
+      "技能找不到：确认目录名与 skills 路径",
+      "没有报告：检查当前目录是否可写",
+      "误报多：按证据逐条复核，别直接改",
+      "扫描太慢：先只传 `src/` 子目录",
+      "漏掉后端：本技能只覆盖前端代码",
+      "报告覆盖旧文件：会自动加时间戳，注意找最新"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/xss-audit-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/xss-audit-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "xss-audit",
+    "XSS 审计",
+    "前端 安全 检查",
+    "React 安全 审计",
+    "静态 代码 审计",
+    "Claude Code 安全",
+    "Agent Skill 安全",
+    "xss audit 教程",
+    "Trusted Types 检查",
+    "xss-audit deploy guide"
+  ],
+  "topics": [
+    "security",
+    "xss",
+    "static-analysis",
+    "agent-skills",
+    "javascript",
+    "xss-audit"
+  ]
+}

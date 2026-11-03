@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "xssaudit-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
